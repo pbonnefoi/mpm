@@ -1,10 +1,7 @@
 <template>
-  <div id="footer" class="container">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/legal">Legal</router-link>
-    </div>
-  </div>
+  <footer class="container">
+    <p>© MPM 2018 | <router-link to="/legal" class="p-2 text-dark">Legal</router-link></p>
+  </footer>
 </template>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

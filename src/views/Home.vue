@@ -15,14 +15,14 @@
       <div class="row">
         <div class="col-md-4" v-for="masterpiece in filteredMasterpieces">
           <div class="card mb-4 box-shadow">
-            <div class="card-body">
-              <router-link :to="{ name: 'masterpiece', params: { masterpieceID: masterpiece.nid }}">{{ masterpiece.title }}</router-link>
-              {{ masterpiece.date }}<br>
+            <div class="card-body" v-b-popover.hover="'I am popover content!'" data-html="true" :title="masterpiece.date">
+              <h2><router-link :to="{ name: 'masterpiece', params: { masterpieceID: masterpiece.nid }}" class="badge badge-light badge-pill">{{ masterpiece.title }}</router-link></h2>
               <img :src="masterpiece.image" :alt="masterpiece.title" class="card-img-top">
             </div>
           </div>
         </div>
       </div>
+      <hr>
     </div>
   </div>
 </template>
@@ -58,6 +58,7 @@
                 }, response => {
                     console.log(response.body);
                 });
+                $('[data-toggle="tooltip"]').tooltip()
             },
         },
     };

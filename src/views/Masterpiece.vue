@@ -5,8 +5,8 @@
         <div class="col-md-12" v-for="masterpieceItem in masterpiece">
           <div class="card mb-12 box-shadow">
             <div class="card-body">
-              {{ masterpieceItem.title }}<br>
-              {{ masterpieceItem.date }}<br>
+              <h2><span class="badge badge-light badge-pill">{{ masterpieceItem.title }}</span></h2>
+              <p>{{ masterpieceItem.date }}</p>
               <div class="description" v-html="masterpieceItem.description"></div>
               <img :src="masterpieceItem.image" :alt="masterpieceItem.title" class="card-img-top">
             </div>

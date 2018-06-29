@@ -37,5 +37,4 @@
 body {
   overflow: scroll;
 }
-@import'~bootstrap/dist/css/bootstrap.css'
 </style>
