@@ -1,0 +1,5 @@
+'use strict'
+export const apiBaseUrl = 'http://mpmapi.test:8080'
+export const getMasterpiecesAPIUrl = '/api/v1.0/masterpieces'
+export const getMasterpieceSingleAPIUrl = '/api/v1.0/masterpiece/'
+export const getFormatUrl = '?_format=json'

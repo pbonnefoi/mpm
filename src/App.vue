@@ -1,16 +1,24 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <TheHeader/>
     <router-view/>
+    <TheFooter/>
   </div>
 </template>
 
+<script>
+    import TheHeader from '@/components/TheHeader.vue'; // @ is an alias to /src
+    import TheFooter from '@/components/TheFooter.vue'; // @ is an alias to /src
+    export default {
+        components: {
+            TheHeader,
+            TheFooter,
+        },
+    };
+</script>
+
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -26,4 +34,8 @@
     }
   }
 }
+body {
+  overflow: scroll;
+}
+@import'~bootstrap/dist/css/bootstrap.css'
 </style>
