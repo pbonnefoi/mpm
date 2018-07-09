@@ -3,11 +3,13 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12" v-for="masterpieceItem in masterpiece">
-          <div class="card mb-12 box-shadow">
+          <div class="card-body bg-white">
+            <h2><span class="text-dark small">{{ masterpieceItem.title }}</span></h2>
+            <p>{{ masterpieceItem.date }}</p>
+            <div class="description" v-html="masterpieceItem.description"></div>
+          </div>
+          <div class="mb-4 box-shadow bg-white">
             <div class="card-body">
-              <h2><span class="badge badge-light badge-pill">{{ masterpieceItem.title }}</span></h2>
-              <p>{{ masterpieceItem.date }}</p>
-              <div class="description" v-html="masterpieceItem.description"></div>
               <img :src="masterpieceItem.image" :alt="masterpieceItem.title" class="card-img-top">
             </div>
           </div>
