@@ -2,7 +2,7 @@
   <div class="masterpiece">
     <div class="container">
       <div class="row">
-        <div class="col-md-12" v-for="masterpieceItem in masterpiece">
+        <div class="col-md-12" v-for="masterpieceItem in masterpiece" v-bind:key="masterpieceItem.nid">
           <div class="card-body bg-white">
             <h2><span class="text-dark small">{{ masterpieceItem.title }}</span></h2>
             <p>{{ masterpieceItem.date }}</p>
@@ -29,6 +29,11 @@
         },
         mounted() {
             this.getMasterpiece();
+        },
+        computed: {
+            masterpiece() {
+                return this.$store.state.masterpiece;
+            }
         },
         methods: {
             getMasterpiece() {
