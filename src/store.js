@@ -10,8 +10,8 @@ export function createStore () {
             all: []
         },
         actions: {
-            getMasterpieces({ commit }) {
-                masterpieces.getMainMasterpiecesList((masterpiece) => commit('setMasterpiece', masterpiece))
+            getAllMasterpieces({ commit }) {
+                masterpieces.getMasterpieces((masterpiece) => commit('setMasterpiece', masterpiece))
             },
             getSingleMasterpiece({ commit }, id) {
                 masterpieces.getMasterpiece(id, (masterpiece) => commit('setMasterpiece', masterpiece))

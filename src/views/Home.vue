@@ -1,13 +1,13 @@
 <template>
   <div class="home">
-    <div class="mdl-layout__content">      
+    <div class="mdl-layout__content">
       <transition-group name="fade-drop" tag="div" class="mdl-grid">
-        <div class="mdl-cell mdl-cell--4-col" v-for="masterpiece in filteredMasterpieces" v-bind:key="masterpiece.nid" v-if="!loading" >
+        <div class="mdl-cell mdl-cell--4-col" v-for="masterpieceItem in masterpiece" v-bind:key="masterpieceItem.nid" v-if="!loading" >
           <div class="mdl-card mdl-shadow--2dp">
             <div class="mdl-card__title">
-              <h2 class="mdl-card__title-text"><router-link :to="{ name: 'masterpiece', params: { masterpieceID: masterpiece.nid }}" class="text-dark small">{{ masterpiece.title }}</router-link></h2>
+              <h2 class="mdl-card__title-text"><router-link :to="{ name: 'masterpiece', params: { masterpieceID: masterpieceItem.nid }}" class="text-dark small">{{ masterpieceItem.title }}</router-link></h2>
             </div>
-            <img :src="masterpiece.image" :alt="masterpiece.title" class="card-img-top">
+            <img :src="masterpieceItem.image" :alt="masterpieceItem.title" class="card-img-top">
           </div>
         </div>
       </transition-group>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+    import { mapState, mapActions } from 'vuex'
     import * as global from '@/global';
     export default {
         data() {
@@ -37,26 +38,12 @@
             }
         },
         mounted() {
-            this.getMainMasterpiecesList();
+            this.$store.dispatch('getAllMasterpieces', this.$route.params.masterpieceID)
         },
-        computed: {
-            filteredMasterpieces() {
-                var masterpieces = this.masterpieces.filter((masterpiece) => {
-                    return masterpiece.title.toLowerCase().includes(this.filter.toLowerCase());
-                });
-                return masterpieces;
-            }
-        },
+        computed: mapState({
+                masterpiece: state => state.all
+        }),
         methods: {
-            getMainMasterpiecesList() {
-                this.loading = true;
-                this.$http.get(global.apiBaseUrl + global.getMasterpiecesAPIUrl + global.getFormatUrl).then(response => {
-                    this.loading = false;
-                    this.masterpieces = response.body;
-                }, response => {
-                    console.log(response.body);
-                });
-            },
             onClickPrevious() {
                 this.loading = true;
                 this.page--;

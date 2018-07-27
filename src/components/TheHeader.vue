@@ -29,6 +29,14 @@
                 sitename: 'MPM',
             }
         },
+        computed: {
+            filteredMasterpieces() {
+                var masterpieces = this.masterpieces.filter((masterpiece) => {
+                        return masterpiece.title.toLowerCase().includes(this.filter.toLowerCase());
+                });
+                return masterpieces;
+            }
+        },
     };
 </script>
 

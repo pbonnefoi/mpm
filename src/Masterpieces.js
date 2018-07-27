@@ -2,7 +2,7 @@ import Api from '@/Api'
 import * as global from '@/global'
 
 export default {
-    async getMainMasterpiecesList(cb) {
+    async getMasterpieces(cb) {
         const response = await Api().get(global.getMasterpiecesAPIUrl + global.getFormatUrl)
         setTimeout(() => cb(response.data), 0)
     },
