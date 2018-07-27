@@ -1,5 +1,5 @@
 <template>
-  <div id="app" v-on:mousemove="onDocumentMouseMove">
+  <div id="app" v-on:mousemove="onDocumentMouseMove" class="mdl-layout mdl-js-layout">
     <canvas ref="canvas" id="cube"></canvas>
     <TheHeader/>
     <router-view/>
@@ -63,6 +63,7 @@
 </script>
 
 <style lang="scss">
+  @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
   #app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

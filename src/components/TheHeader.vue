@@ -1,11 +1,23 @@
 <template>
-  <header class="container">
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3">
-      <h4 class="my-0 mr-md-auto font-weight-normal">{{ sitename }}</h4>
-      <nav class="my-2 my-md-0 mr-md-3">
-        <router-link to="/" class="p-2 text-dark">Home</router-link> |
-        <router-link to="/about" class="p-2 text-dark">About</router-link>
+  <header class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">{{ sitename }}</span>
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <router-link to="/" class="mdl-navigation__link">Home</router-link> |
+        <router-link to="/about" class="mdl-navigation__link">About</router-link>
       </nav>
+      <form action="#">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+          <label class="mdl-button mdl-js-button mdl-button--icon" for="searchFilter">
+            <i class="material-icons">Search</i>
+          </label>
+          <div class="mdl-textfield__expandable-holder">
+            <input v-model="filter" type="text" class="mdl-textfield__input" id="searchFilter" placeholder="Search">
+            <label for="searchFilter" class="mdl-textfield__label">Search</label>
+          </div>
+        </div>
+      </form>
     </div>
   </header>
 </template>
@@ -22,18 +34,10 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.mdl-layout__header--transparent {
+  color: #2c3e50;
+  .mdl-layout__header-row .mdl-navigation__link {
+    color: #2c3e50;
+  }
 }
 </style>

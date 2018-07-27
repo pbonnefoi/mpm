@@ -20,29 +20,14 @@
 </template>
 
 <script>
-    import * as global from '@/global';
+    import { mapState, mapActions } from 'vuex'
     export default {
-        data() {
-            return {
-                masterpiece: '',
-            }
-        },
-        mounted() {
-            this.getMasterpiece();
-        },
-        computed: {
-            masterpiece() {
-                return this.$store.state.masterpiece;
-            }
-        },
-        methods: {
-            getMasterpiece() {
-                this.$http.get(global.apiBaseUrl + global.getMasterpieceSingleAPIUrl + this.$route.params.masterpieceID + global.getFormatUrl).then(response => {
-                    this.masterpiece = response.body;
-                }, response => {
-                    console.log(response.body);
-                });
-            }
+        computed: mapState({
+            masterpiece: state => state.all
+        }),
+        mounted () {
+            console.log('mounted');
+            this.$store.dispatch('getSingleMasterpiece', this.$route.params.masterpieceID)
         },
     };
 </script>
